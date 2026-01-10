@@ -40,6 +40,25 @@
             background-color: #1C1B1B;
             color: #F9F9F9;
         }
+      /* ALERTA PREMIUM – Regra Central */
+@keyframes alertPulse {
+    0% {
+        box-shadow: 0 0 0 rgba(196, 122, 99, 0);
+        border-left-color: #C47A63;
+    }
+    50% {
+        box-shadow: 0 0 18px rgba(196, 122, 99, 0.45);
+        border-left-color: #E8B6A8;
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(196, 122, 99, 0);
+        border-left-color: #C47A63;
+    }
+}
+
+.alert-premium {
+    animation: alertPulse 3.5s ease-in-out infinite;
+}
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -357,7 +376,7 @@
 
             <!-- Regra Central -->
             <div class="fade-in-section">
-                <div class="bg-[#2A2625] border-l-8 border-[#C47A63] p-6 md:p-8 rounded-r-2xl mb-10 md:mb-14 shadow-lg flex flex-col md:flex-row gap-6 items-start md:items-center">
+                <div class="bg-[#2A2625] border-l-8 border-[#C47A63] p-6 md:p-8 rounded-r-2xl mb-10 md:mb-14 shadow-lg flex flex-col md:flex-row gap-6 items-start md:items-center alert-premium">
                     <div class="bg-[#C47A63]/20 text-[#C47A63] p-4 rounded-full shrink-0">
                         <i data-lucide="alert-circle" class="w-8 h-8"></i>
                     </div>
