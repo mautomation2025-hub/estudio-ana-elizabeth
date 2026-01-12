@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-<!-- Google Analytics -->
+  <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -617,7 +617,67 @@
         </div>
     </section>
 
-    
+    <!-- AI WELLNESS CONSULTANT -->
+    <section class="py-12 md:py-20 bg-[#1C1B1B] border-t border-[#3E3836] relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C47A63] to-transparent opacity-50"></div>
+        <div class="absolute -left-20 top-20 w-64 h-64 bg-[#C47A63] rounded-full filter blur-[100px] opacity-10"></div>
+ 
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+           <div class="text-center mb-8 md:mb-10">
+             <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C47A63]/10 text-[#C47A63] text-sm font-bold uppercase tracking-wider mb-4 border border-[#C47A63]/20">
+               <i data-lucide="sparkles" class="w-4 h-4"></i> Cuidado Personalizado para Você
+             </span>
+             <h2 class="text-3xl md:text-4xl font-bold text-[#F9F9F9] mb-4">
+               Consultoria de Bem-Estar com IA ✨
+             </h2>
+             <p class="text-[#D6C8C5] text-base md:text-base max-w-2xl mx-auto mb-4 leading-relaxed">
+               Tem alguma dúvida sobre treinos, dores ou como começar? Pergunte para nossa assistente virtual inteligente e receba uma dica personalizada agora mesmo!
+             </p>
+             <p class="text-xs md:text-sm text-[#7A7A7A] mt-4 flex items-center justify-center gap-2">
+               <i data-lucide="lock" class="w-3 h-3"></i> As informações inseridas aqui não são armazenadas. <button id="open-privacy-btn-ai" class="underline hover:text-[#C47A63]">Política de Privacidade.</button>
+             </p>
+           </div>
+ 
+           <div class="bg-[#2A2625] rounded-3xl p-6 md:p-10 shadow-2xl border border-[#3E3836]">
+              <div class="flex flex-col gap-5 md:gap-6">
+                 <label class="text-[#E8B6A8] font-semibold text-base uppercase tracking-wide ml-1">O que você gostaria de saber?</label>
+                 <div class="relative">
+                   <input 
+                     type="text" 
+                     id="ai-input"
+                     placeholder="Ex: Quero emagrecer mas tenho pouco tempo..."
+                     class="w-full bg-[#1C1B1B] text-[#F9F9F9] rounded-2xl px-6 py-5 md:py-4 border border-[#3E3836] focus:border-[#C47A63] focus:ring-1 focus:ring-[#C47A63] outline-none transition-all placeholder-[#7A7A7A] text-base md:text-base"
+                   />
+                   <button 
+                     id="ai-send-btn"
+                     class="absolute right-2 top-2 bottom-2 bg-[#C47A63] hover:bg-[#D98871] text-white px-4 md:px-6 rounded-xl flex items-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-base font-bold"
+                   >
+                     <span id="ai-btn-text">Perguntar</span>
+                     <span id="ai-btn-icon"><i data-lucide="send" class="w-6 h-6"></i></span>
+                     <span id="ai-btn-loader" class="hidden"><i data-lucide="loader-2" class="animate-spin w-6 h-6"></i></span>
+                   </button>
+                 </div>
+              </div>
+ 
+              <div id="ai-result-area" class="overflow-hidden mt-8 hidden transition-all duration-300">
+                <div class="bg-[#1C1B1B]/50 rounded-2xl p-6 md:p-8 border border-[#C47A63]/20 flex gap-6 items-start">
+                   <div class="bg-[#C47A63] p-3 rounded-full shrink-0 mt-1 hidden sm:block">
+                     <i data-lucide="message-circle" class="text-white w-6 h-6"></i>
+                   </div>
+                   <div class="grow">
+                     <h4 class="text-[#C47A63] font-bold mb-3 text-lg md:text-base flex items-center gap-2">
+                        <i data-lucide="message-circle" class="sm:hidden w-6 h-6"></i> Resposta da Coach Virtual:
+                     </h4>
+                     <p id="ai-response-text" class="text-[#D6C8C5] leading-relaxed whitespace-pre-line text-base md:text-base">
+                       <!-- Response goes here -->
+                     </p>
+                   </div>
+                </div>
+              </div>
+           </div>
+        </div>
+    </section>
 
     <!-- GOOGLE REVIEWS -->
     <section id="depoimentos" class="py-12 md:py-20 bg-[#242221] overflow-hidden relative border-t border-[#3E3836]">
@@ -1036,7 +1096,7 @@
         // --- 4. Privacy Modal Logic ---
         const modal = document.getElementById('privacy-modal');
         const modalContent = document.getElementById('privacy-content');
-        const openBtns = [document.getElementById('open-privacy-footer')];
+        const openBtns = [document.getElementById('open-privacy-btn-ai'), document.getElementById('open-privacy-footer')];
         const closeBtns = [document.getElementById('close-privacy'), document.getElementById('confirm-privacy')];
 
         function openModal() {
@@ -1146,7 +1206,53 @@
             observer.observe(section);
         });
 
-                });
+        // --- 8. AI Consultant Logic (Mocked + Fetch structure) ---
+        const aiInput = document.getElementById('ai-input');
+        const aiSendBtn = document.getElementById('ai-send-btn');
+        const aiResultArea = document.getElementById('ai-result-area');
+        const aiResponseText = document.getElementById('ai-response-text');
+        const aiBtnIcon = document.getElementById('ai-btn-icon');
+        const aiBtnLoader = document.getElementById('ai-btn-loader');
+        
+        async function generateAdvice() {
+            const query = aiInput.value.trim();
+            if (!query) return;
+
+            // UI Loading State
+            aiSendBtn.disabled = true;
+            aiBtnIcon.classList.add('hidden');
+            aiBtnLoader.classList.remove('hidden');
+            aiResultArea.classList.add('hidden');
+            aiResponseText.textContent = '';
+
+            const apiKey = ""; // Mantido vazio conforme original
+
+            try {
+                // Simulação da lógica do código original que tentava fetch e tinha fallback
+                // Se houvesse chave, faria fetch aqui. 
+                // Como é estático/demo, usamos o fallback do catch ou um delay simulado.
+                
+                await new Promise(resolve => setTimeout(resolve, 1500)); // Delay artificial
+
+                // Fallback de resposta (Mimetizando o catch do código original)
+                const fallbackResponse = `Que ótima pergunta! 💪 Para responder com a atenção que você merece, recomendo conversar com nossas treinadoras. \n\nQue tal agendar sua aula experimental gratuita pelo WhatsApp? ✨`;
+                
+                aiResponseText.textContent = fallbackResponse;
+                aiResultArea.classList.remove('hidden');
+
+            } catch (error) {
+                console.error(error);
+            } finally {
+                aiSendBtn.disabled = false;
+                aiBtnIcon.classList.remove('hidden');
+                aiBtnLoader.classList.add('hidden');
+            }
+        }
+
+        aiSendBtn.addEventListener('click', generateAdvice);
+        aiInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') generateAdvice();
+        });
 
     </script>
 </body>
