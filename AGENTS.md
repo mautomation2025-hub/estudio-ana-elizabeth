@@ -131,3 +131,25 @@ Antes de qualquer publicação, apresentar:
 - Se está pronto ou não para produção.
 
 Ao concluir uma tarefa, informar o resultado, as verificações realizadas e se houve commit, pull request, merge ou publicação. Nunca apresentar uma publicação como autorizada por suposição.
+
+## 11. Preview e aprovação visual obrigatória
+
+Para toda alteração visual ou de conteúdo do site na `develop`, cumprir esta etapa depois dos testes e antes de preparar um Pull Request para produção:
+
+1. Concluir os testes e registrar as alterações em um commit somente na `develop`.
+2. Aguardar a publicação automática do Preview do Cloudflare. Não substituir essa etapa por deploy manual em produção.
+3. Confirmar que a publicação foi concluída com sucesso e corresponde ao SHA completo do commit que acabou de ser criado. Não apresentar um Preview de uma versão anterior como se fosse a versão atual.
+4. Fornecer obrigatoriamente ao usuário:
+   - O link do Preview da branch `develop`: https://develop.estudio-ana-elizabeth.pages.dev/.
+   - Quando disponível, o link específico do deploy correspondente àquela versão/commit.
+   - O SHA curto do commit apresentado para aprovação.
+5. Informar claramente, usando esta frase exata: **"Aguardando aprovação visual antes de criar Pull Request para produção."**
+6. Parar e aguardar a aprovação visual explícita do usuário para a versão apresentada. Não criar Pull Request para `main` antes dessa aprovação.
+
+Se o usuário solicitar ajustes, realizá-los na `develop`, testar novamente, criar um novo commit, aguardar e conferir o NOVO Preview e fornecer os novos links e SHA para uma nova aprovação visual. A aprovação de uma versão anterior não autoriza mudanças posteriores.
+
+Se o Preview falhar, estiver pendente, não corresponder ao commit ou não puder ser confirmado, informar a situação ao usuário e não avançar para o Pull Request.
+
+Somente depois de o usuário dizer explicitamente que a versão visual está aprovada, preparar o Pull Request para `main`. A aprovação visual permite preparar o Pull Request; não autoriza merge ou publicação em produção, que continuam exigindo autorização explícita separada.
+
+Fluxo obrigatório: `develop` → testes e commit → Preview confirmado → aprovação visual explícita → Pull Request → autorização explícita de publicação → `main` → site oficial.
