@@ -21,8 +21,11 @@
     
     <!-- Estilos -->
     <link rel="stylesheet" href="CSS style.css">
+    <!-- Aviso de atualização compartilhado entre as páginas -->
+    <link rel="stylesheet" href="../assets/site-update.css">
+    <script src="../assets/site-update.js" defer></script>
 </head>
-<body>
+<body class="site-update-page">
 
     <!-- Hero Section -->
     <header class="hero section-padding reveal">
@@ -224,5 +227,27 @@
     </footer>
 
     <script src="JavaScript.js"></script>
+
+    <!-- Aviso permanente durante a atualização do site: sem dispensa e sem bloqueio de navegação. -->
+    <aside class="site-update-notice" aria-labelledby="site-update-title" aria-describedby="site-update-description">
+        <div class="site-update-notice__inner">
+            <div class="site-update-notice__message">
+                <p id="site-update-title" class="site-update-notice__title">
+                    <svg class="site-update-notice__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M20 7v5h-5M4 17v-5h5"></path>
+                        <path d="M6.1 7a7 7 0 0 1 11.5-2L20 8M4 16l2.4 3A7 7 0 0 0 17.9 17"></path>
+                    </svg>
+                    Estamos atualizando nosso site
+                </p>
+                <p id="site-update-description" class="site-update-notice__description">Algumas informações podem estar temporariamente desatualizadas enquanto realizamos melhorias. Confirme planos, horários e modalidades diretamente com o Estúdio pelo WhatsApp.</p>
+            </div>
+            <a class="site-update-notice__cta" href="https://wa.me/5511948718238" target="_blank" rel="noopener noreferrer" aria-label="Falar com o Estúdio pelo WhatsApp (abre em nova aba)">
+                Falar com o Estúdio pelo WhatsApp
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                    <path d="M7 17 17 7M7 7h10v10"></path>
+                </svg>
+            </a>
+        </div>
+    </aside>
 </body>
 </html>
