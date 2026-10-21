@@ -69,6 +69,96 @@
     animation: alertPulse 3.5s ease-in-out infinite;
 }
 
+        /* Plano de Verão: destaque e cartão comercial com estilos locais. */
+        .summer-offer {
+            border: 1px solid #C47A63;
+            border-radius: 24px;
+            background: linear-gradient(120deg, #382721, #262120);
+            color: #F9F9F9;
+        }
+        .summer-offer--banner {
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+            gap: 32px;
+            align-items: center;
+            padding: 36px;
+            box-shadow: 0 12px 40px rgb(0 0 0 / 20%);
+        }
+        .summer-offer__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 100%;
+            margin-bottom: 16px;
+            padding: 7px 12px;
+            border: 1px solid rgb(196 122 99 / 40%);
+            border-radius: 999px;
+            background: rgb(232 182 168 / 10%);
+            color: #E8B6A8;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+        .summer-offer__icon { width: 20px; height: 20px; flex: none; }
+        .summer-offer__badge .summer-offer__icon { width: 16px; height: 16px; }
+        .summer-offer__title {
+            margin-bottom: 12px;
+            font-size: clamp(28px, 3vw, 36px);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -.03em;
+        }
+        .summer-offer__copy { color: #D6C8C5; line-height: 1.6; }
+        .summer-offer__gift {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px;
+            color: #E8B6A8;
+            font-weight: 600;
+        }
+        .summer-offer__purchase { border-left: 1px solid rgb(196 122 99 / 35%); padding-left: 32px; }
+        .summer-offer__price {
+            margin: 6px 0;
+            font-size: clamp(38px, 4vw, 48px);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -.04em;
+        }
+        .summer-offer__price small { font-size: .5em; font-weight: 600; letter-spacing: 0; }
+        .summer-offer__cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 48px;
+            margin-top: 22px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            background: #C47A63;
+            color: #fff;
+            font-weight: 700;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color .2s;
+        }
+        .summer-offer__cta:hover { background: #D98871; }
+        .summer-offer__cta:focus-visible { outline: 3px solid #F9F9F9; outline-offset: 4px; }
+        .summer-offer__note { margin-top: 12px; color: #D6C8C5; font-size: 14px; line-height: 1.5; }
+        .summer-offer--card { padding: 24px; margin-bottom: 32px; }
+        .summer-offer--card .summer-offer__title { font-size: 24px; }
+        .summer-offer--card .summer-offer__price { font-size: 38px; }
+        .summer-offer__benefits { display: grid; gap: 10px; margin-top: 22px; color: #D6C8C5; }
+        .summer-offer__benefits li { display: flex; align-items: flex-start; gap: 10px; }
+        .summer-offer__benefits .summer-offer__icon { color: #E8B6A8; }
+        @media (max-width: 767px) {
+            .summer-offer--banner { grid-template-columns: minmax(0, 1fr); padding: 24px; gap: 24px; }
+            .summer-offer__purchase { border-left: 0; border-top: 1px solid rgb(196 122 99 / 35%); padding-left: 0; padding-top: 24px; }
+            .summer-offer--card { padding: 20px; }
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -260,6 +350,27 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promoção aprovada: sem data ou quantidade de vagas não informadas. -->
+    <section id="plano-de-verao" class="pb-8 md:pb-12" aria-labelledby="plano-de-verao-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="summer-offer summer-offer--banner">
+                <div>
+                    <p class="summer-offer__badge"><i data-lucide="hourglass" class="summer-offer__icon" aria-hidden="true"></i> Promoção por tempo limitado</p>
+                    <h2 id="plano-de-verao-title" class="summer-offer__title">Seu verão começa com uma escolha de hoje.</h2>
+                    <p class="summer-offer__copy">Plano de Verão · Pacote trimestral com acompanhamento profissional para cuidar de você.</p>
+                    <p class="summer-offer__gift"><i data-lucide="gift" class="summer-offer__icon" aria-hidden="true"></i> 1 avaliação física de brinde</p>
+                </div>
+                <div class="summer-offer__purchase">
+                    <p class="summer-offer__copy">3 meses de treino por</p>
+                    <p class="summer-offer__price"><small>R$</small> 500,00</p>
+                    <p class="summer-offer__copy">Parcelamento em <strong>2× de R$ 250,00</strong></p>
+                    <a class="summer-offer__cta" href="https://wa.me/5511948718238?text=Ol%C3%A1!%20Quero%20aproveitar%20o%20Plano%20de%20Ver%C3%A3o%3A%203%20meses%20por%20R%24%20500%2C00%2C%20em%202x%20de%20R%24%20250%2C00%2C%20com%201%20avalia%C3%A7%C3%A3o%20f%C3%ADsica%20de%20brinde." target="_blank" rel="noopener noreferrer">Quero aproveitar a oferta <i data-lucide="arrow-up-right" class="summer-offer__icon" aria-hidden="true"></i></a>
+                    <p class="summer-offer__note">Aproveite enquanto a promoção está disponível.</p>
                 </div>
             </div>
         </div>
@@ -611,6 +722,20 @@
                             Escolha o plano que melhor se adapta à sua rotina e viva a experiência de um estúdio com acompanhamento real.
                         </p>
 
+                        <article class="summer-offer summer-offer--card" aria-labelledby="plano-de-verao-card-title">
+                            <p class="summer-offer__badge"><i data-lucide="sun" class="summer-offer__icon" aria-hidden="true"></i> Por tempo limitado</p>
+                            <h4 id="plano-de-verao-card-title" class="summer-offer__title">Plano de Verão</h4>
+                            <p class="summer-offer__copy">Pacote trimestral · 3 meses</p>
+                            <p class="summer-offer__price"><small>R$</small> 500,00</p>
+                            <p class="summer-offer__copy">2× de R$ 250,00</p>
+                            <ul class="summer-offer__benefits">
+                                <li><i data-lucide="check" class="summer-offer__icon" aria-hidden="true"></i> Treinos personalizados</li>
+                                <li><i data-lucide="check" class="summer-offer__icon" aria-hidden="true"></i> Acompanhamento profissional</li>
+                                <li><i data-lucide="gift" class="summer-offer__icon" aria-hidden="true"></i> 1 avaliação física de brinde</li>
+                            </ul>
+                            <a class="summer-offer__cta" href="https://wa.me/5511948718238?text=Ol%C3%A1!%20Quero%20aproveitar%20o%20Plano%20de%20Ver%C3%A3o%3A%203%20meses%20por%20R%24%20500%2C00%2C%20em%202x%20de%20R%24%20250%2C00%2C%20com%201%20avalia%C3%A7%C3%A3o%20f%C3%ADsica%20de%20brinde." target="_blank" rel="noopener noreferrer">Quero garantir meu plano <i data-lucide="arrow-up-right" class="summer-offer__icon" aria-hidden="true"></i></a>
+                        </article>
+
                       <ul class="space-y-4 mb-10">
 
                       <li class="bg-[#2A2625] p-5 rounded-2xl border border-[#3E3836]">
@@ -736,6 +861,7 @@
 
                             <div>
                                 <p class="flex items-center gap-3"><i data-lucide="info" class="w-5 h-5 text-[#C47A63]"></i> Avaliação física (obrigatória para iniciar): <span class="text-[#F9F9F9] font-bold">R$ 30,00</span></p>
+                                <p class="summer-offer__note">No Plano de Verão, 1 avaliação física é oferecida de brinde.</p>
                                 <p class="text-xs md:text-sm text-[#7A7A7A] ml-8 mt-1">Ao fechar qualquer plano mensal de treinamento, esse valor é convertido em bônus na sua primeira avaliação física.</p>
                             </div>
                     </div>
