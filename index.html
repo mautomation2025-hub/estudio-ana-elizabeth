@@ -222,6 +222,98 @@
             background-color: #C47A63;
             color: white;
         }
+
+        /* Black Friday de novembro de 2026 */
+        .black-friday {
+            padding: clamp(105px, 12vw, 155px) 16px 0;
+            color: #fff8fa;
+        }
+        .black-friday__card {
+            max-width: 1160px;
+            margin-inline: auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            align-items: center;
+            gap: clamp(24px, 5vw, 72px);
+            padding: clamp(26px, 5vw, 64px);
+            border: 1px solid #754254;
+            border-radius: 28px;
+            background:
+                radial-gradient(ellipse at top left, #461b2f 0%, transparent 65%),
+                linear-gradient(125deg, #170e15 35%, #2b111e 100%);
+            box-shadow: 0 24px 70px #08050859;
+        }
+        .black-friday__period {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: #ffc0d4;
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+        .black-friday__period::before {
+            content: "";
+            width: 22px;
+            height: 1px;
+            background: currentColor;
+        }
+        .black-friday__title {
+            margin: 12px 0 18px;
+            font-size: clamp(2.5rem, 6.4vw, 6rem);
+            line-height: .95;
+            letter-spacing: -.065em;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+        .black-friday__title span { display: block; color: #ff9abb; }
+        .black-friday__benefits {
+            max-width: 37ch;
+            color: #e6cdd7;
+            font-size: clamp(.875rem, 1.5vw, 1.0625rem);
+            line-height: 1.55;
+        }
+        .black-friday__offer {
+            padding: clamp(19px, 3vw, 34px);
+            border: 1px solid #a16378;
+            border-radius: 20px;
+            background: linear-gradient(150deg, #3b1c2b, #23121d);
+        }
+        .black-friday__plan { font-weight: 800; font-size: 1.125rem; }
+        .black-friday__duration { color: #e6cdd7; font-size: .875rem; margin-top: 3px; }
+        .black-friday__price {
+            margin: 10px 0 18px;
+            color: #ffdeaa;
+            font-size: clamp(2.5rem, 5.2vw, 4.875rem);
+            font-weight: 800;
+            letter-spacing: -.065em;
+            line-height: 1;
+            white-space: nowrap;
+        }
+        .black-friday__price small { font-size: .48em; letter-spacing: 0; }
+        .black-friday__cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 48px;
+            padding: 11px 14px;
+            border-radius: 11px;
+            background: #ffc0d4;
+            color: #2c101d;
+            text-align: center;
+            font-weight: 800;
+            line-height: 1.35;
+            text-decoration: none;
+        }
+        .black-friday__cta:hover { background: #ffdae6; }
+        .black-friday__cta:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+        .black-friday:not([hidden]) + .black-friday__next { padding-top: clamp(40px, 6vw, 80px); }
+        @media (max-width: 740px) {
+            .black-friday__card { grid-template-columns: minmax(0, 1fr); }
+            .black-friday__title span { display: inline; }
+        }
     </style>
     <!-- Aviso de atualização compartilhado entre as páginas -->
     <link rel="stylesheet" href="assets/site-update.css">
@@ -276,9 +368,32 @@
         </div>
     </nav>
 
+    <section class="black-friday" id="black-friday" aria-labelledby="black-friday-title">
+        <div class="black-friday__card">
+            <div>
+                <p class="black-friday__period">Oferta de novembro</p>
+                <h2 id="black-friday-title" class="black-friday__title">Black <span>Friday</span></h2>
+                <p class="black-friday__benefits">Treinos completos com acompanhamento profissional em um ambiente feminino e acolhedor.</p>
+            </div>
+            <div class="black-friday__offer">
+                <h3 class="black-friday__plan">Plano bimestral</h3>
+                <p class="black-friday__duration">2 meses de treinamento</p>
+                <p class="black-friday__price"><small>R$</small> 299,90</p>
+                <a class="black-friday__cta" href="https://wa.me/5511948718238?text=Ol%C3%A1%21%20Quero%20aproveitar%20a%20Black%20Friday%20do%20Est%C3%BAdio%20Ana%20Elizabeth%3A%20plano%20bimestral%20de%20R%24%20299%2C90%20por%202%20meses%20de%20treinamento." target="_blank" rel="noopener noreferrer">
+                    Quero meu plano pelo WhatsApp <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </div>
+        <script>
+            // Encerra a oferta à meia-noite de 1º de dezembro no horário de São Paulo.
+            if (Date.now() >= Date.parse('2026-12-01T00:00:00-03:00')) {
+                document.getElementById('black-friday').hidden = true;
+            }
+        </script>
+    </section>
     <!-- HERO -->
     <!-- AJUSTE DE ESPAÇAMENTO PREMIUM: pt reduzido para proximidade com navbar, pb reduzido para eliminar buraco visual -->
-    <section class="relative pt-28 pb-8 lg:pt-40 lg:pb-16 overflow-hidden bg-gradient-to-b from-[#2A2625] via-[#1C1B1B] to-[#1C1B1B]">
+    <section class="black-friday__next relative pt-28 pb-8 lg:pt-40 lg:pb-16 overflow-hidden bg-gradient-to-b from-[#2A2625] via-[#1C1B1B] to-[#1C1B1B]">
         <!-- Blobs -->
         <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-[#C47A63] rounded-full mix-blend-screen filter blur-[120px] opacity-10 animate-blob"></div>
         <div class="absolute top-0 left-0 -ml-20 w-72 h-72 bg-[#E8B6A8] rounded-full mix-blend-screen filter blur-[100px] opacity-10 animate-blob animation-delay-2000"></div>
